@@ -1,1 +1,12 @@
-// 在此处测试；当此软件包作为插件使用时，将不会编译此软件包。
+Servo.SetLED(1, false)
+music.playMelody("C D E F G A B C5 ", 120)
+basic.forever(function () {
+    Servo.SetLED(0, false)
+    Servo.SetLED(1, false)
+    Servo.SetLED(2, false)
+    basic.pause(500)
+    Servo.SetLED(0, true)
+    Servo.SetLED(1, true)
+    Servo.SetLED(2, true)
+    basic.pause(500)
+})

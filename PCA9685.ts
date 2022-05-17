@@ -146,7 +146,7 @@ namespace Servo {
      */
     //% blockId=setLED block="Set LED|%led|state %state"
     //% weight=85
-    //% led.min=1 led.max=3
+    //% led.min=0 led.max=2
     export function SetLED(led: number, state: boolean): void {
         if (!initialized) {
             initPCA9685();
