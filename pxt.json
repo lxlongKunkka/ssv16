@@ -11,7 +11,9 @@
         "README.md",
         "PCA9685.ts",
         "ST7735.ts",
-        "74HC165.ts"
+        "74HC165.ts",
+        "Motor.ts",
+        "PCF8591.ts"
     ],
     "testFiles": [
         "test.ts"
