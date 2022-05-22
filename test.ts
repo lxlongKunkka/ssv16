@@ -1,4 +1,6 @@
 Servo.SetLED(1, false)
+serial.redirectToUSB()
+Analog.DAC(255)
 //music.playMelody("C D E F G A B C5 ", 120)
 LCD1IN8.LCD_Init()
 LCD1IN8.LCD_Filling(COLOR.BLUE)
