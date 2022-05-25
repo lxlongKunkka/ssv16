@@ -1768,31 +1768,31 @@ namespace LCD1IN8 {
     //% Color.min=0 Color.max=65535
     //% weight=100
     export function DisplayString(Xchar: number, Ychar: number, ch: string, Color: number): void {
-        // let Xpoint = Xchar;
-        // let Ypoint = Ychar;
-        // let Font_Height = 12;
-        // let Font_Width = 7;
-        // let ch_len = ch.length;
-        // let i = 0;
-        // for (i = 0; i < ch_len; i++) {
-        //     let ch_asicc = ch.charCodeAt(i) - 32;//NULL = 32
-        //     let Char_Offset = ch_asicc * 12;
+        let Xpoint = Xchar;
+        let Ypoint = Ychar;
+        let Font_Height = 12;
+        let Font_Width = 7;
+        let ch_len = ch.length;
+        let i = 0;
+        for (i = 0; i < ch_len; i++) {
+            let ch_asicc = ch.charCodeAt(i) - 32;//NULL = 32
+            let Char_Offset = ch_asicc * 12;
 
-        //     if ((Xpoint + Font_Width) > 160) {
-        //         Xpoint = Xchar;
-        //         Ypoint += Font_Height;
-        //     }
+            if ((Xpoint + Font_Width) > 160) {
+                Xpoint = Xchar;
+                Ypoint += Font_Height;
+            }
 
-        //     // If the Y direction is full, reposition to(Xstart, Ystart)
-        //     if ((Ypoint + Font_Height) > 128) {
-        //         Xpoint = Xchar;
-        //         Ypoint = Ychar;
-        //     }
-        //     DisChar_1207(Xpoint, Ypoint, Char_Offset, Color);
+            // If the Y direction is full, reposition to(Xstart, Ystart)
+            if ((Ypoint + Font_Height) > 128) {
+                Xpoint = Xchar;
+                Ypoint = Ychar;
+            }
+            DisChar_1207(Xpoint, Ypoint, Char_Offset, Color);
 
-        //     //The next word of the abscissa increases the font of the broadband
-        //     Xpoint += Font_Width;
-        // }
+            //The next word of the abscissa increases the font of the broadband
+            Xpoint += Font_Width;
+        }
     }
 
     //% blockId=DisNumber
