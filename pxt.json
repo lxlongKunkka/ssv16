@@ -7,7 +7,6 @@
         "microphone": "*"
     },
     "files": [
-        "main.ts",
         "README.md",
         "PCA9685.ts",
         "ST7735.ts",

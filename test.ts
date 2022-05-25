@@ -1,66 +1,113 @@
+function right() {
+    Motor.MotorRun(Motors.M1, -200)
+    Motor.MotorRun(Motors.M2, 200)
+    basic.pause(100)
+    Motor.MotorRun(Motors.M1, 0)
+    Motor.MotorRun(Motors.M2, 0)
+}
+function back() {
+    Motor.MotorRun(Motors.M1, -200)
+    Motor.MotorRun(Motors.M2, -200)
+}
+function left() {
+    Motor.MotorRun(Motors.M1, 200)
+    Motor.MotorRun(Motors.M2, -200)
+    basic.pause(100)
+    Motor.MotorRun(Motors.M1, 0)
+    Motor.MotorRun(Motors.M2, 0)
+}
+function stop() {
+    Motor.MotorRun(Motors.M1, 0)
+    Motor.MotorRun(Motors.M2, 0)
+}
+radio.onReceivedString(function (receivedString) {
+    if (receivedString == "forward") {
+        forward()
+        basic.showArrow(ArrowNames.North)
+        music.playTone(262, music.beat(BeatFraction.Whole))
+    } else if (receivedString == "back") {
+        back()
+        basic.showArrow(ArrowNames.South)
+        music.playTone(294, music.beat(BeatFraction.Whole))
+    } else if (receivedString == "left") {
+        left()
+        basic.showArrow(ArrowNames.West)
+        music.playTone(330, music.beat(BeatFraction.Whole))
+    } else if (receivedString == "right") {
+        right()
+        basic.showArrow(ArrowNames.East)
+        music.playTone(349, music.beat(BeatFraction.Whole))
+    } else if (receivedString == "stop") {
+        stop()
+        basic.showIcon(IconNames.Heart)
+        music.playTone(392, music.beat(BeatFraction.Whole))
+    }
+})
+function forward() {
+    Motor.MotorRun(Motors.M1, 200)
+    Motor.MotorRun(Motors.M2, 200)
+}
+Servo.SetLED(0, false)
 Servo.SetLED(1, false)
-serial.redirectToUSB()
-Analog.DAC(255)
-//music.playMelody("C D E F G A B C5 ", 120)
+Servo.SetLED(2, false)
+radio.setGroup(1)
 LCD1IN8.LCD_Init()
 LCD1IN8.LCD_Filling(COLOR.BLUE)
-LCD1IN8.DisNumber(0, 0, 12345, 0)
+LCD1IN8.DisplayString(0, 0, "hello", 0)
 
+loops.everyInterval(500, function () {
+
+})
 basic.forever(function () {
     Servo.SetLED(0, false)
     Servo.SetLED(1, false)
     Servo.SetLED(2, false)
+    Analog.DAC(0)
     basic.pause(500)
     Servo.SetLED(0, true)
     Servo.SetLED(1, true)
     Servo.SetLED(2, true)
+    Analog.DAC(255)
     basic.pause(500)
 })
 
-basic.forever(function () {
-    if (0 == pins.digitalReadPin(DigitalPin.P5)) {
-        music.playTone(Note.C, music.beat())
-        
-        //LCD1IN8.DrawRectangle(randint(0, 80), randint(0, 60), randint(80, 160), randint(60, 120), randint(0, 65535), DRAW_FILL.DRAW_EMPTY, DOT_PIXEL.DOT_PIXEL_1)
+loops.everyInterval(200, function () {
+    if (input.buttonIsPressed(Button.A)) {
+        LCD1IN8.DrawCircle(
+            10,
+            10,
+            2,
+            63488,
+            DRAW_FILL.DRAW_FULL,
+            DOT_PIXEL.DOT_PIXEL_1
+        )
+    } else {
+        LCD1IN8.DrawCircle(
+            10,
+            10,
+            2,
+            33840,
+            DRAW_FILL.DRAW_FULL,
+            DOT_PIXEL.DOT_PIXEL_1
+        )
     }
-    if (0 == pins.digitalReadPin(DigitalPin.P11)) {
-        music.playTone(Note.D, music.beat())
-        //LCD1IN8.DrawCircle(randint(40, 80), randint(50, 60), randint(30, 40), randint(0, 65535), DRAW_FILL.DRAW_EMPTY, DOT_PIXEL.DOT_PIXEL_1)
+    if (input.buttonIsPressed(Button.B)) {
+        LCD1IN8.DrawCircle(
+            150,
+            10,
+            2,
+            63488,
+            DRAW_FILL.DRAW_FULL,
+            DOT_PIXEL.DOT_PIXEL_1
+        )
+    } else {
+        LCD1IN8.DrawCircle(
+            150,
+            10,
+            2,
+            33840,
+            DRAW_FILL.DRAW_FULL,
+            DOT_PIXEL.DOT_PIXEL_1
+        )
     }
-})
-
-basic.forever(function () {
-    SimpleShieldKey.Read74HC165()
-    if (SimpleShieldKey.Listen_Key(KEY.A)) {
-        basic.showString("A")
-        Motor.MotorRun(Motors.M1, 200)
-        Motor.MotorRun(Motors.M2, 200)
-    }
-    if (SimpleShieldKey.Listen_Key(KEY.B)) {
-        basic.showString("B")
-        Motor.MotorRun(Motors.M1, -200)
-        Motor.MotorRun(Motors.M2, -200)
-    }
-    if (SimpleShieldKey.Listen_Key(KEY.MENU)) {
-        basic.showString("M")
-        Motor.MotorRun(Motors.M1, 0)
-        Motor.MotorRun(Motors.M2, 0)
-    }
-    if (SimpleShieldKey.Listen_Key(KEY.UP)) {
-        basic.showArrow(ArrowNames.North)
-    }
-    if (SimpleShieldKey.Listen_Key(KEY.DOWN)) {
-        basic.showArrow(ArrowNames.South)
-    }
-    if (SimpleShieldKey.Listen_Key(KEY.LEFT)) {
-        basic.showArrow(ArrowNames.West)
-    }
-    if (SimpleShieldKey.Listen_Key(KEY.RIGHT)) {
-        basic.showArrow(ArrowNames.East)
-    }
-})
-
-basic.forever(function() {
-    Analog.ScanAllChannel()
-    basic.pause(1000)
 })

@@ -1,35 +1,9 @@
-// Add your code here
-/*****************************************************************************
-* | File      	:   SSLCD1in8.ts
-* | Function    :   Contorl ST7735 1.8inch lcd Show
-* | Info        :
-*----------------
-* | This version:   V2.0
-* | Date        :   2022-03-21
-* | Info        :   for micro:bit v2
-*
-******************************************************************************/
 let GUI_BACKGROUND_COLOR = 1
 let FONT_BACKGROUND_COLOR = 1
 let FONT_FOREGROUND_COLOR = 0
 
 let LCD_WIDTH = 160  //LCD width
 let LCD_HEIGHT = 128 //LCD height
-
-/*
-// SRAM opcodes
-let SRAM_CMD_WREN = 0x06
-let SRAM_CMD_WRDI = 0x04
-let SRAM_CMD_RDSR = 0x05
-let SRAM_CMD_WRSR = 0x01
-let SRAM_CMD_READ = 0x03
-let SRAM_CMD_WRITE = 0x02
-
-// SRAM modes
-let SRAM_BYTE_MODE = 0x00
-let SRAM_PAGE_MODE = 0x80
-let SRAM_STREAM_MODE = 0x40
-*/
 
 enum COLOR {
     WHITE = 0xFFFF,
@@ -1823,41 +1797,6 @@ namespace LCD1IN8 {
                 off++;
         }// Write all
     }
-
-    /*
-    
-        //spi ram
-        function SPIRAM_Set_Mode(mode: number): void {
-            pins.digitalWritePin(DigitalPin.P2, 0);
-            pins.spiWrite(SRAM_CMD_WRSR);
-            pins.spiWrite(mode);
-            pins.digitalWritePin(DigitalPin.P2, 1);
-        }
-    
-        function SPIRAM_RD_Byte(Addr: number): number {
-            let RD_Byte;
-            pins.digitalWritePin(DigitalPin.P2, 0);
-            pins.spiWrite(SRAM_CMD_READ);
-            pins.spiWrite(0X00);
-            pins.spiWrite(Addr >> 8);
-            pins.spiWrite(Addr);
-            RD_Byte = pins.spiWrite(0x00);
-            pins.digitalWritePin(DigitalPin.P2, 1);
-    
-            return RD_Byte;
-        }
-    
-        function SPIRAM_WR_Byte(Addr: number, Data: number): void {
-            pins.digitalWritePin(DigitalPin.P2, 0);
-            pins.spiWrite(SRAM_CMD_WRITE);
-            pins.spiWrite(0X00);
-            pins.spiWrite(Addr >> 8);
-            pins.spiWrite(Addr);
-            pins.spiWrite(Data);
-            pins.digitalWritePin(DigitalPin.P2, 1);
-        }
-    
-    */
 
     function Swap_AB(Point1: number, Point2: number): void {
         let Temp = 0;
