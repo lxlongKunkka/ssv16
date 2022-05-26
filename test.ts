@@ -53,11 +53,11 @@ Servo.SetLED(2, false)
 radio.setGroup(1)
 LCD1IN8.LCD_Init()
 LCD1IN8.LCD_Filling(COLOR.BLUE)
-LCD1IN8.DisplayString(0, 0, "0123456789", 0)
-LCD1IN8.DisplayString(0, 12, "ABCDEFGHIJKLMN", 0)
-LCD1IN8.DisplayString(0, 24, "OPQRSTUVWXYZ", 0)
-LCD1IN8.DisplayString(0, 36, "abcdefghijklmn", 0)
-LCD1IN8.DisplayString(0, 48, "opqrstuvwxyz", 0)
+LCD1IN8.DisString(0, 0, "0123456789", 0)
+LCD1IN8.DisString(0, 12, "ABCDEFGHIJKLMN", 0)
+LCD1IN8.DisString(0, 24, "OPQRSTUVWXYZ", 0)
+LCD1IN8.DisString(0, 36, "abcdefghijklmn", 0)
+LCD1IN8.DisString(0, 48, "opqrstuvwxyz", 0)
 
 loops.everyInterval(500, function () {
 
